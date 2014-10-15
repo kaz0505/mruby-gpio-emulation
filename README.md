@@ -5,19 +5,19 @@ mrbgem for pc emulation
 
 # 使用方法
 
-1. mruby をダウンロードする
+- mruby をダウンロードする
 
-    git clone http://github.com/mruby/mruby
+        git clone http://github.com/mruby/mruby
 
-2. build_config.rb の設定をする
+- build_config.rb の設定をする
 
 「conf.gembox 'default'」の前あたりに以下の１行をを追加する。
 
-    conf.gem :github => 'kaz0505/mruby-gpio-emulation'
+        conf.gem :github => 'kaz0505/mruby-gpio-emulation'
 
-3. mrubyをビルドする
+- mrubyをビルドする
 
-    make
+        make
 
 
 
