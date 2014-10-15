@@ -23,11 +23,17 @@ f_gpio_pinmode(mrb_state *mrb, mrb_value self)
 static mrb_value
 f_gpio_dwrite(mrb_state *mrb, mrb_value self)
 {
-  char buf[100];
+  char buf[100], *val_str;
   mrb_int pin, value;
   mrb_get_args(mrb, "ii", &pin, &value);
 
-  sprintf(buf, "output %d to port %d", pin, value);
+  if( value == 0 ){
+    val_str = "LOW";
+  } else {
+    val_str = "HIGH";
+  }
+
+  sprintf(buf, "output %s to port %d", val_str, pin);
   puts(buf);
 
   return mrb_nil_value();
