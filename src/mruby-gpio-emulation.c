@@ -36,8 +36,11 @@ static mrb_value
 f_gpio_dread(mrb_state *mrb, mrb_value self)
 {
   static int _val = 0;    /* dummy value */
-
+  mrb_int pin;
   char buf[100];
+
+  mrb_get_args(mrb, "ii", &pin, &value);
+
   sprintf(buf, "input from port %d", pin);
 
   _val = !_val;    /* dummy value */
