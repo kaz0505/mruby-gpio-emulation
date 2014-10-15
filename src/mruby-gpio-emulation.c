@@ -39,7 +39,7 @@ f_gpio_dread(mrb_state *mrb, mrb_value self)
   mrb_int pin;
   char buf[100];
 
-  mrb_get_args(mrb, "ii", &pin, &value);
+  mrb_get_args(mrb, "i", &pin);
 
   sprintf(buf, "input from port %d", pin);
 
@@ -49,7 +49,7 @@ f_gpio_dread(mrb_state *mrb, mrb_value self)
 }
 
 void
-mrb_mruby_gpio_raspi_gem_init(mrb_state* mrb)
+mrb_mruby_gpio_emulation_gem_init(mrb_state* mrb)
 {
   struct RClass *c;
   c = mrb_define_module(mrb, "Gpio");
@@ -65,6 +65,6 @@ mrb_mruby_gpio_raspi_gem_init(mrb_state* mrb)
 }
 
 void
-mrb_mruby_gpio_raspi_gem_final(mrb_state* mrb)
+mrb_mruby_gpio_emulation_gem_final(mrb_state* mrb)
 {
 }
