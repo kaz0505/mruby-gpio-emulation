@@ -15,6 +15,7 @@ f_gpio_pinmode(mrb_state *mrb, mrb_value self)
     dir_str = "input";
   }
   sprintf(buf, "set %s to port %d", dir_str, pin);  
+  puts(buf);
 
   return mrb_nil_value();
 }
