@@ -5,21 +5,16 @@
 static mrb_value
 f_gpio_pinmode(mrb_state *mrb, mrb_value self)
 {
-  char buf[100];
+  char buf[100], *dir_str;
   mrb_int pin, dir;
-
   mrb_get_args(mrb, "ii", &pin, &dir);
-  if( dir == 1 ){  // output
-    sprintf(buf, "echo %d > /sys/class/gpio/export", pin);
-    system(buf);
-    sprintf(buf, "echo out > /sys/class/gpio/gpio%d/direction", pin);
-    system(buf);
-  } else {         // input
-    sprintf(buf, "echo %d > /sys/class/gpio/export", pin);
-    system(buf);
-    sprintf(buf, "echo in > /sys/class/gpio/gpio%d/direction", pin);
-    system(buf);
+
+  if( dir==1 ){  // output
+    dir_str = "output";
+  } else {  // input
+    dir_str = "input";
   }
+  sprintf(buf, "set %s to port %d", dir_str, pin);  
 
   return mrb_nil_value();
 }
