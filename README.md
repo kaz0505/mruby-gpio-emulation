@@ -1,4 +1,4 @@
-mrbgem_gpio_emulation
+mrbgem-gpio-emulation
 =====================
 
 mrbgem for pc emulation
