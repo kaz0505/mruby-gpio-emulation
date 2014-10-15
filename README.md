@@ -1,21 +1,21 @@
 mrbgem-gpio-emulation
 =====================
 
-mrbgem for pc emulation
+mrbgem for GPIO, console emulation
 
-# 使用方法
+# Installation
 
-- mruby をダウンロードする
+- Download mruby
 
         git clone http://github.com/mruby/mruby
 
-- build_config.rb の設定をする
+- Configure "build_config.rb" 
 
-「conf.gembox 'default'」の前あたりに以下の１行をを追加する。
+The following one line should be inserted after "conf.gembox 'default'" in "build_config.rb".
 
         conf.gem :github => 'kaz0505/mruby-gpio-emulation'
 
-- mrubyをビルドする
+- Build mruby
 
         make
 
@@ -23,16 +23,18 @@ mrbgem for pc emulation
 
 ----
 
-例えば以下のサンプルを動かせます。
+# Example
 
+        Gpio.pinmode 1, Gpio::OUTPUT
+        Gpio.pinmode 2, Gpio::INPUT
+        
+        Gpio.digitalWrite 1, Gpio::HIGH
+        Gpio.digitalWrite 2, Gpio::LOW
 
-    Gpio.pinmode 1, Gpio::OUTPUT
-    Gpio.pinmode 2, Gpio::INPUT
-    
-    Gpio.digitalWrite 1, Gpio::HIGH
-    Gpio.digitalWrite 2, Gpio::LOW
-
+The gpio emulation result is printed to console.
 
 ----
+
+# Class Reference
 
 
