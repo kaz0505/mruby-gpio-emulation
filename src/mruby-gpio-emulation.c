@@ -33,7 +33,7 @@ f_gpio_dwrite(mrb_state *mrb, mrb_value self)
     val_str = "HIGH";
   }
 
-  sprintf(buf, "output %s to port %d", val_str, pin);
+  sprintf(buf, "output %i to port %d", val_str, pin);
   puts(buf);
 
   return mrb_nil_value();
@@ -41,6 +41,35 @@ f_gpio_dwrite(mrb_state *mrb, mrb_value self)
 
 static mrb_value
 f_gpio_dread(mrb_state *mrb, mrb_value self)
+{
+  static int _val = 0;    /* dummy value */
+  mrb_int pin;
+  char buf[100];
+
+  mrb_get_args(mrb, "i", &pin);
+
+  sprintf(buf, "input from port %d", pin);
+
+  _val = !_val;    /* dummy value */
+
+  return mrb_fixnum_value(_val);
+}
+
+static mrb_value
+f_gpio_awrite(mrb_state *mrb, mrb_value self)
+{
+  char buf[100], *val_str;
+  mrb_int pin, value;
+  mrb_get_args(mrb, "ii", &pin, &value);
+
+  sprintf(buf, "output duty ratio %i to port %d", value, pin);
+  puts(buf);
+
+  return mrb_nil_value();
+}
+
+static mrb_value
+f_gpio_aread(mrb_state *mrb, mrb_value self)
 {
   static int _val = 0;    /* dummy value */
   mrb_int pin;
@@ -69,6 +98,8 @@ mrb_mruby_gpio_emulation_gem_init(mrb_state* mrb)
   mrb_define_module_function(mrb, c, "pinmode", f_gpio_pinmode, MRB_ARGS_REQ(2));
   mrb_define_module_function(mrb, c, "digitalWrite", f_gpio_dwrite, MRB_ARGS_REQ(2));
   mrb_define_module_function(mrb, c, "digitalRead", f_gpio_dread, MRB_ARGS_REQ(1));
+  mrb_define_module_function(mrb, c, "analogWrite", f_gpio_awrite, MRB_ARGS_REQ(2));
+  mrb_define_module_function(mrb, c, "analogRead", f_gpio_aread, MRB_ARGS_REQ(1));
 }
 
 void
