@@ -95,7 +95,7 @@ mrb_mruby_gpio_emulation_gem_init(mrb_state* mrb)
   mrb_define_const(mrb, c, "HIGH", mrb_fixnum_value(1));
   mrb_define_const(mrb, c, "LOW", mrb_fixnum_value(0));
 
-  mrb_define_module_function(mrb, c, "pinmode", f_gpio_pinmode, MRB_ARGS_REQ(2));
+  mrb_define_module_function(mrb, c, "pinMode", f_gpio_pinmode, MRB_ARGS_REQ(2));
   mrb_define_module_function(mrb, c, "digitalWrite", f_gpio_dwrite, MRB_ARGS_REQ(2));
   mrb_define_module_function(mrb, c, "digitalRead", f_gpio_dread, MRB_ARGS_REQ(1));
   mrb_define_module_function(mrb, c, "analogWrite", f_gpio_awrite, MRB_ARGS_REQ(2));
