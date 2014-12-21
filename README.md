@@ -11,7 +11,7 @@ mrbgem for GPIO, console emulation
 
 - Configure "build_config.rb" 
 
-The following one line should be inserted after "conf.gembox 'default'" in "build_config.rb".
+Insert the following one line after "conf.gembox 'default'" in "build_config.rb".
 
         conf.gem :github => 'kaz0505/mruby-gpio-emulation'
 
