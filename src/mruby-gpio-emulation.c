@@ -33,7 +33,7 @@ f_gpio_dwrite(mrb_state *mrb, mrb_value self)
     val_str = "HIGH";
   }
 
-  sprintf(buf, "output %i to port %d", val_str, pin);
+  sprintf(buf, "output %s to port %d", val_str, pin);
   puts(buf);
 
   return mrb_nil_value();
