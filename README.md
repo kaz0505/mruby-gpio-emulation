@@ -25,8 +25,8 @@ Insert the following one line after "conf.gembox 'default'" in "build_config.rb"
 
 # Example
 
-        Gpio.pinmode 1, Gpio::OUTPUT
-        Gpio.pinmode 2, Gpio::INPUT
+        Gpio.pinMode 1, Gpio::OUTPUT
+        Gpio.pinMode 2, Gpio::INPUT
         
         Gpio.digitalWrite 1, Gpio::HIGH
         Gpio.digitalWrite 2, Gpio::LOW
